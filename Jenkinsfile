@@ -12,13 +12,13 @@ pipeline {
             }
         }
 
-//        stage('Build') { 
-//            steps { 
-//                script{
-//                 app = docker.build("underwater")
-//                }
-//            }
-//        }
+        stage('Build') { 
+            steps { 
+                script{
+                 app = docker.build("underwater")
+                }
+            }
+        }
         stage('Test'){
             steps {
                  echo 'Empty'
