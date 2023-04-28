@@ -24,15 +24,15 @@ pipeline {
                  echo 'Empty'
             }
         }
-//        stage('Deploy') {
-//            steps {
-//                script{
-//                        docker.withRegistry('https://720766170633.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:aws-credentials') {
-//                    app.push("${env.BUILD_NUMBER}")
-//                    app.push("latest")
-//                    }
-//                }
-//            }
-//        }
+        stage('Deploy') {
+            steps {
+                script{
+                        docker.withRegistry('535449263269.dkr.ecr.ap-southeast-1.amazonaws.com/7booster', 'AKIAXZK2DLSS4ZB7SO7V') {
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
+                    }
+                }
+            }
+        }
     }
 }
