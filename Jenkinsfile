@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                        docker.withRegistry('535449263269.dkr.ecr.ap-southeast-1.amazonaws.com/7booster', '52a20caa-afca-4cfb-94ee-a1aaf14f5796	') {
+                        docker.withRegistry('harbor.mdca.io/7booster', '1f4f0388-5e6c-40eb-b37e-162e3c80302e') {
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                     }
