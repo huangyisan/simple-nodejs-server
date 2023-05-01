@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                        docker.withRegistry('harbor.mdca.io/7booster', '1f4f0388-5e6c-40eb-b37e-162e3c80302e') {
+                        docker.withRegistry('https://harbor.mdca.io/7booster', '1f4f0388-5e6c-40eb-b37e-162e3c80302e') {
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                     }
