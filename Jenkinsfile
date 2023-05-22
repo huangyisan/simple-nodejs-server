@@ -19,6 +19,7 @@ pipeline {
                     echo \${lastTag}
                     git checkout ${lastTag}
                     export env_lastTag=${lastTag}
+                    
                     '''
                     // script {
                     //     env.lastTag="${lastTag}"
