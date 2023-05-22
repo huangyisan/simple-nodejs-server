@@ -28,7 +28,7 @@ pipeline {
 
         stage('Build') { 
             steps { 
-                sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${lastTag} .'
+                sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${TAG_NAME} .'
                 }
             }
         
