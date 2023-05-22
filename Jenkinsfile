@@ -12,6 +12,8 @@ pipeline {
          stage('Clone repository') { 
             steps { 
                     sh '''
+                    comm=$(git rev-list --tags --max-count=1)
+                    echo \${comm}
                     lastTag=\$(git describe --tags `git rev-list --tags --max-count=1`)
                     echo \${lastTag}
                     env.lastTag=\${lastTag}
