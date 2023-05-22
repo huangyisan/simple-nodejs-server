@@ -20,7 +20,7 @@ pipeline {
                     git checkout ${lastTag}
                     '''
                     script {
-                        env.lastTag=\${lastTag}
+                        env.lastTag=${lastTag}
                     }
             }
         }
