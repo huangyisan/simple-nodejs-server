@@ -26,7 +26,7 @@ pipeline {
                 sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${lastTag} .'
                 }
             }
-        }
+        
         stage('Test'){
             steps {
                  echo 'Empty'
