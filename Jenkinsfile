@@ -10,7 +10,7 @@ pipeline {
     }
     stages {
          stage('Clone repository') { 
-            steps { 
+            steps {
                     sh '''
                     git branch -a
                     comm=$(git rev-list --tags --max-count=1)
