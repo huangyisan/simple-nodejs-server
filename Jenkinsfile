@@ -12,6 +12,7 @@ pipeline {
          stage('Clone repository') { 
             steps {
                     sh '''
+                    printenv
                     git branch -a
                     comm=$(git rev-list --tags --max-count=1)
                     echo \${comm}
