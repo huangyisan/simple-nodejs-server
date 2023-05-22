@@ -3,35 +3,33 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    environment {
+        HARBOR_URL = "harbor.7booster.cc"
+        REPO_URL = "git@github.com:huangyisan/simple-nodejs-server.git"
+        HELM_BRANCH = "release/helm"
+    }
     stages {
          stage('Clone repository') { 
             steps { 
-                script{
-                checkout scm
-                }
+                    sh '''
+                    lastTag=\$(git describe --tags `git rev-list --tags --max-count=1`)
+                    echo \${lastTag}
+                    env.lastTag=\${lastTag}
+                    git checkout ${lastTag}
+      
+                    '''
             }
         }
 
         stage('Build') { 
             steps { 
-                script{
-                 app = docker.build("7booster/nodejs-server-demo")
+                sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${lastTag} .'
                 }
             }
         }
         stage('Test'){
             steps {
                  echo 'Empty'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script{
-                        docker.withRegistry('https://harbor.mdca.io/7booster', '1f4f0388-5e6c-40eb-b37e-162e3c80302e') {
-                    app.push("${env.BUILD_NUMBER}")
-                    app.push("latest")
-                    }
-                }
             }
         }
     }
