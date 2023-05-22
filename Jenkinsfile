@@ -18,16 +18,17 @@ pipeline {
                     lastTag=\$(git describe --tags `git rev-list --tags --max-count=1`)
                     echo \${lastTag}
                     git checkout ${lastTag}
+                    export env_lastTag=${lastTag}
                     '''
-                    script {
-                        env.lastTag="${lastTag}"
-                    }
+                    // script {
+                    //     env.lastTag="${lastTag}"
+                    // }
             }
         }
 
         stage('Build') { 
             steps { 
-                sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${lastTag} .'
+                sh 'docker build -f Dockerfile -t ${HARBOR_URL}/7booster/simple-nodejs-server:${env_lastTag} .'
                 }
             }
         
